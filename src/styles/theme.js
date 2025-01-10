@@ -5,7 +5,7 @@ export const lightTheme = {
         error: "#FF4C4C",
         warning: "#f1c40f",
         success: "#2ecc71",
-        write: "#FFFFFF",
+        white: "#FFFFFF",
         light: "#ecf0f1",
         Gray: '#A0A0A0',
         dark: "#2c3e50",
