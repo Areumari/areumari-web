@@ -13,7 +13,7 @@ export const FormContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f8f8f8;
+    background-color: ${({ theme }) => theme.colors.light};
     //box-shadow: 0 4px 4px rgba(0,0,0,0.25);
 `
 export const BackgroundContainer = styled(FormContainer)`

@@ -3,17 +3,23 @@ import {login, register} from "src/lib/customAxios";
 
 export const useAuth = () => {
     const [user, setUser] = useState({
+        id: "",
         email: "",
         password: "",
-        number: undefined,
+        checkPassword: "",
+        number: "",
     });
-    const [checkEmail, setCheckEmail] = useState(false);
+    const [isEmail, setCheckEmail] = useState(false);
+    const [isPassword, setIsPassword] = useState(false);
     const [checkPassword, setCheckPassword] = useState(false);
-    const [checkNumber, setCheckNumber] = useState(false);
+    const [isNumber, setIsNumber] = useState(false);
+    const [pass, setPass] = useState(true);
+
     useEffect(() => {
         setCheckEmail(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,4}$/.test(user.email))
-        setCheckPassword(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?!.*\s).{4,15}$/.test(user.password))
-        setCheckNumber(/^[1-3][1-4](?!00)[0-1][0-9]$/.test(user.number));
+        setIsPassword(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?!.*\s).{4,15}$/.test(user.password))
+        setCheckPassword(user.password === user.checkPassword);
+        setIsNumber(/^[1-3][1-9](?!00)[0-2][0-9]$/.test(user.number));
     }, [user])
 
     const changeInput = (e) => {
@@ -21,14 +27,17 @@ export const useAuth = () => {
         setUser({...user, [name]: value});
     }
     const signIn = () => {
-        if (checkEmail && checkPassword) {
+        if (pass) {
             console.log(user)
             return login().then(res => {
-            })
+                console.log(res)
+            }).catch(err => {
+                setPass(false)
+            });
         }
     }
     const signUp = () => {
-        if (checkEmail && checkPassword && checkNumber) {
+        if (isEmail && isPassword && isNumber) {
             return register().then(res => {
             })
         }
@@ -36,10 +45,12 @@ export const useAuth = () => {
 
     return {
         user,
-        changeInput,
-        checkEmail,
+        isEmail,
+        isPassword,
         checkPassword,
-        checkNumber,
+        isNumber,
+        pass,
+        changeInput,
         signIn,
         signUp,
     }

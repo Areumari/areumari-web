@@ -7,28 +7,30 @@ import {useNavigate} from "react-router-dom";
 const LoginForm = () => {
     const {...auth} = useAuth()
     const navigate = useNavigate();
-    const goBack = () => {
-        navigate(-1);
-    }
+    const goBack = () => navigate(-1);
+    const goForgotPassword = () => navigate(-1);
+    const goSignup = () => navigate('/signup')
     return (
         <S.Wrapper>
-            <S.Back onClick={goBack}>{'<-'} </S.Back>
+            <S.Back onClick={goBack}>{'←'} </S.Back>
             <S.Title>로그인</S.Title>
             <TextInput
-                name={'email'}
-                placeholder={'name@example.com'}
-                value={auth.user.email}
+                title={'아이디'}
+                name={'id'}
+                placeholder={'아이디를 입력해주세요'}
+                value={auth.user.id}
                 change={auth.changeInput}
                 size={30}
-                warn={auth.checkEmail ? null : '이메일 형식이 아닙니다'}
+                warn={auth.pass ? null : 'error!'}
             />
             <TextInput
+                title={'비밀번호'}
                 name={'password'}
-                placeholder={'*****'}
+                placeholder={'비밀번호를 입력해주세요'}
                 value={auth.user.password}
                 change={auth.changeInput}
-                size={15}
-                warn={auth.checkPassword ? null : '공백을 제외한 영어 대/소문자, 숫자를 4~15자 사이로 입력하여야 합니다' }
+                size={30}
+                warn={auth.isPassword ? null : `공백을 제외한 영어 대/소문자, 숫자를 4~30자 사이로 입력하여야 합니다` }
                 isPassword
             />
 
@@ -36,8 +38,8 @@ const LoginForm = () => {
                 <S.FormButton onClick={auth.signIn}>
                     <S.ButtonText>로그인</S.ButtonText>
                 </S.FormButton>
-                <S.Text>비밀번호 찾기</S.Text>
-                <S.Text>회원가입</S.Text>
+                <S.Text onClick={goForgotPassword}>비밀번호 찾기</S.Text>
+                <S.Text className={'color'} onClick={goSignup}>회원가입</S.Text>
             </S.ButtonContainer>
         </S.Wrapper>
     )

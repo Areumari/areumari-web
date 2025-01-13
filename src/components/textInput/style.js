@@ -7,20 +7,21 @@ export const Wrapper = styled.div`
     gap: 0.5em;
 `
 export const Title = styled.span`
-    font-size: 1.5vw;
-    font-weight: 600;
+    font-size: ${({ theme }) => theme.fontSize.medium1};
+    font-weight: ${({ theme }) => theme.fontWeight.medium1};
 `
 export const InputContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #5B94F3;
+    padding-bottom: 1%;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.main};
 `
 export const TextInput = styled.input`
     width: 100%;
     font-family: Pretendard, sans-serif;
-    font-weight: 400;
-    font-size: 2vw;
+    font-size: ${({ theme }) => theme.fontSize.medium1};
+    font-weight: ${({ theme }) => theme.fontWeight.medium1};
     &:invalid {
         box-shadow: none;
         outline: none;
@@ -32,11 +33,11 @@ export const TextInput = styled.input`
     
 `
 export const ShowPassword = styled.span`
-    font-size: 2vw;
+    font-size: ${({ theme }) => theme.fontSize.medium1};
     cursor: pointer;
     user-select: none;
 `
 export const Warn = styled.span`
-    font-size: 1vw;
+    font-size: ${({ theme }) => theme.fontSize.small1};
     color: indianred;
 `
