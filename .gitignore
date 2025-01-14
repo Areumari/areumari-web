@@ -1,3 +1,6 @@
+#env파일 무시
+.env
+
 # Created by https://www.toptal.com/developers/gitignore/api/macos,vs,webstorm+all,react
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,vs,webstorm+all,react
 
