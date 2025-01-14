@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './style'
+import * as S from '../style'
 import TextInput from "src/components/textInput";
 import {useAuth} from "src/hooks/useAuth";
 import {useNavigate} from "react-router-dom";
@@ -51,6 +51,7 @@ const SignupForm = () => {
                 change={auth.changeInput}
                 size={30}
                 warn={auth.isEmail ? null : '이메일 형식이 아닙니다'}
+                verify={auth.verifyCode}
             />
             <TextInput
                 title={'학번'}
@@ -62,11 +63,11 @@ const SignupForm = () => {
                 warn={auth.isNumber ? null : '학번 형식이 아닙니다'}
             />
 
-            <S.ButtonContainer>
-                <S.FormButton onClick={auth.signIn}>
+            <S.ButtonContainer2>
+                <S.FormButton onClick={auth.signUp}>
                     <S.ButtonText>확인</S.ButtonText>
                 </S.FormButton>
-            </S.ButtonContainer>
+            </S.ButtonContainer2>
         </S.Wrapper>
     )
 }

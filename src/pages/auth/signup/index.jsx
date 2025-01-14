@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./style";
-import SignupForm from "src/components/signupForm";
+import SignupForm from "src/components/auth/signupForm";
 
 const Login = () => {
     return (
