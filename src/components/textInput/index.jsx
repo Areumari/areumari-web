@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import * as S from './style';
 
-const TextInput = ({title, name, placeholder, value, change, size, warn, isPassword = false}) => {
+const TextInput = ({title, name, placeholder, value, change, size, warn, isPassword = false, verify}) => {
     const [see, setSee] = useState(!isPassword);
     const onChangeHandler = (event) => {
         change(event);
@@ -26,6 +26,10 @@ const TextInput = ({title, name, placeholder, value, change, size, warn, isPassw
                         🔎
                     </S.ShowPassword>
                 ) : null}
+                {verify ? (
+                    <S.Verify onClick={verify}>인증</S.Verify>
+                ) : null}
+
             </S.InputContainer>
             <S.Warn>{warn}</S.Warn>
 

@@ -18,7 +18,7 @@ export const InputContainer = styled.div`
     border-bottom: 1px solid ${({ theme }) => theme.colors.main};
 `
 export const TextInput = styled.input`
-    width: 100%;
+    width: 85%;
     font-family: Pretendard, sans-serif;
     font-size: ${({ theme }) => theme.fontSize.medium1};
     font-weight: ${({ theme }) => theme.fontWeight.medium1};
@@ -36,6 +36,15 @@ export const ShowPassword = styled.span`
     font-size: ${({ theme }) => theme.fontSize.medium1};
     cursor: pointer;
     user-select: none;
+`
+export const Verify = styled.span`
+    padding: 1% 2%;
+    border-radius: 5px;
+    font-size: ${({ theme }) => theme.fontSize.mediumSmall1};
+    font-weight: ${({ theme }) => theme.fontWeight.mediumSmall1};
+    color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.main};
+    cursor: pointer;
 `
 export const Warn = styled.span`
     font-size: ${({ theme }) => theme.fontSize.small1};

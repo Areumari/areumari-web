@@ -26,12 +26,17 @@ export const useAuth = () => {
         const {name, value} = e.target;
         setUser({...user, [name]: value});
     }
+    const verifyCode = () => {
+        console.log('... 인증 실패.')
+        return null
+    }
     const signIn = () => {
         if (pass) {
             console.log(user)
             return login().then(res => {
                 console.log(res)
             }).catch(err => {
+                console.log(err)
                 setPass(false)
             });
         }
@@ -39,8 +44,12 @@ export const useAuth = () => {
     const signUp = () => {
         if (isEmail && isPassword && isNumber) {
             return register().then(res => {
+                console.log(res)
             })
         }
+    }
+    const changePW = () => {
+        console.error('미구현된 함수')
     }
 
     return {
@@ -51,7 +60,9 @@ export const useAuth = () => {
         isNumber,
         pass,
         changeInput,
+        verifyCode,
         signIn,
         signUp,
+        changePW,
     }
 }
