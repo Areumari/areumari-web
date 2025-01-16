@@ -2,15 +2,23 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
     width: 100%;
+    height: 98px;
     display: flex;
-    border-bottom: black solid 1px;
     align-items: center;
+    background-color: #ffffff;
     justify-content: space-evenly;
-    padding-top: 2%;
-    padding-bottom: 2%;
+    //box-shadow: 0 4px 4px 0 black;
 `
 export const Logo = styled.img`
+    width: 187.17px;
+    height: 48px;
 `
+
+export const searchButton = styled.img`
+    width: 32px;
+    height: 32px;
+`
+
 export const NavContainer = styled.div`
     width: 50%;
     display: flex;
@@ -25,9 +33,11 @@ export const NavText = styled.span`
     font-family: Pretendard, sans-serif;
     font-weight: 500;
 `
+
 export const MyLogo = styled.div`
     width: 63px;
     aspect-ratio: 1/1;
     border-radius: 100%;
     background-color: #6e6e6e;
+    
 `

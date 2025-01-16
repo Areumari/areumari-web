@@ -2,10 +2,9 @@ import React from 'react';
 import * as S from './style';
 import headerIcon from 'src/assets/images/headerIcon.png'
 import searchIcon from 'src/assets/images/32/General/Search.png'
-import MyLogo from "src/components/myLogo";
 
 const Header = () => {
-    const list = ['강의 소개', '동아리 소개', '강의 순위', '저장한 강의'];
+    const list = ['홈', '기술 스택 소개', '강의 찾기', '저장한 강의','동아리 소개'];
 
     return (
         <S.Wrapper>
@@ -20,10 +19,11 @@ const Header = () => {
                 ))}
             </S.NavContainer>
             <S.Nav>
-                <S.Logo src={searchIcon || null} alt="searchIcon"/>
+                <S.searchButton src={searchIcon || null} alt="searchIcon"/>
             </S.Nav>
             <S.MyLogo/>
         </S.Wrapper>
     )
+
 }
 export default Header;
