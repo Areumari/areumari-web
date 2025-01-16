@@ -12,14 +12,19 @@ export const Wrapper = styled.div`
     box-shadow: 0 2px 2px 0 #aaaaaa;
     border-radius: 10px;
 `
-
-export const TitleContainer = styled.div`
+export const Head = styled.div`
     width: 95%;
     margin: 1em 0;
     display: flex;
     align-items:center;
-    gap: 1em;
+    justify-content: space-between;
     border-radius: 10px;
+`
+
+export const TitleContainer = styled.div`
+    display: flex;
+    gap: 1em;
+    align-items: center;
 `
 
 export const Vector = styled.img`
@@ -42,4 +47,5 @@ export const ListContainer = styled.div`
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 2em;
+    margin: 1em 0;
 `
