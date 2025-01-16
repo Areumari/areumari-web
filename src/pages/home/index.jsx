@@ -1,13 +1,15 @@
 import React from 'react';
 import * as S from './style';
 import Header from "src/components/header";
-import Body from 'src/components/body';
+import Banner from "src/components/banner";
+import TechStackList from "src/components/techStackList";
 
 const Home = () => {
     return (
         <S.Wrapper>
-            <Header></Header>
-            <Body></Body>
+            <Header/>
+            <Banner/>
+            <TechStackList/>
         </S.Wrapper>
     )
 }
