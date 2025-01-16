@@ -1,35 +1,45 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    width: 94%;
-    height:622px;
+    width: 95%;
+    display:flex;
+    flex-direction: column;
+    margin: 2%;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
     background-color :#ffffff;
     box-shadow: 0 2px 2px 0 #aaaaaa;
     border-radius: 10px;
-    margin-top : 2.5%;
-    margin-left : 2%;
-    padding: 26px;
-    
 `
 
-export const ListContainer = styled.div`
-    width: 100%;
-    height: 30px;
+export const TitleContainer = styled.div`
+    width: 95%;
+    margin: 1em 0;
     display: flex;
     align-items:center;
+    gap: 1em;
     border-radius: 10px;
 `
 
-export const Vecter = styled.img`
+export const Vector = styled.img`
     width: 25px;
-    height: 25px;
+    aspect-ratio: 1/1;
 `
 
 export const Text = styled.span`
-    font-size: 25px;
-    font-weight : 550;
+    font-size: ${({ theme }) => theme.fontSize.medium1};
+    font-weight : ${({ theme }) => theme.fontWeight.medium1};
     color: #3379d9;
 `
 
 export const Arrow = styled.img`
+    cursor: pointer;
+`
+export const ListContainer = styled.div`
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2em;
 `
