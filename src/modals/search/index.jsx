@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useRef} from 'react';
 import * as S from './style';
 import searchIcon from 'src/assets/images/32/General/Search.png'
 import {useSearch} from "src/hooks/useSearch";
@@ -12,10 +12,7 @@ const Search = ({setOnClose}) => {
         }
     };
     const {...search} = useSearch(setOnClose);
-    const [quickSearch, setQuickSearch] = useState([]);
-    useEffect(() => {
-        setQuickSearch(['M6A1', 'Tiger II(H)', 'T-34-85(D-5T)', 'Churchill VII']);
-    }, []);
+    const [quickSearch, setQuickSearch] = useState(['M6A1', 'Tiger II(H)', 'T-34-85(D-5T)', 'Churchill VII']);
 
     return (
         <ModalPortal>
