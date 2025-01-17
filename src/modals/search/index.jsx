@@ -11,7 +11,7 @@ const Search = ({setOnClose}) => {
             setOnClose(false); // 모달 닫기
         }
     };
-    const {...search} = useSearch();
+    const {...search} = useSearch(setOnClose);
     const [quickSearch, setQuickSearch] = useState([]);
     useEffect(() => {
         setQuickSearch(['M6A1', 'Tiger II(H)', 'T-34-85(D-5T)', 'Churchill VII']);
