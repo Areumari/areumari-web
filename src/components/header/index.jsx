@@ -1,29 +1,35 @@
-import React from 'react';
+import React, {useState} from 'react';
 import * as S from './style';
 import headerIcon from 'src/assets/images/headerIcon.png'
 import searchIcon from 'src/assets/images/32/General/Search.png'
+import Search from "src/modals/search";
+import {useNavigate} from "react-router-dom";
 
 const Header = () => {
-    const list = ['홈', '기술 스택 소개', '강의 찾기', '저장한 강의','동아리 소개'];
+    const navigate = useNavigate();
+    const lists = ['강의 소개', '동아리 소개', '강의 순위', '저장한 강의'];
+    const [onSearch, setOnSearch] = useState(false);
 
     return (
         <S.Wrapper>
-            <S.Nav onClick={null}>
-                <S.Logo src={headerIcon || null} alt="headerIcon"/>
-            </S.Nav>
-            <S.NavContainer>
-                {list.map((item, index) => (
-                    <S.Nav onClick={null} key={index}>
-                        <S.NavText>{item}</S.NavText>
-                    </S.Nav>
-                ))}
-            </S.NavContainer>
-            <S.Nav>
-                <S.searchButton src={searchIcon || null} alt="searchIcon"/>
-            </S.Nav>
-            <S.MyLogo/>
+            <S.HeaderContainer>
+                <S.Nav onClick={() => navigate('/')}>
+                    <S.Logo src={headerIcon || null} alt="headerIcon"/>
+                </S.Nav>
+                <S.NavContainer>
+                    {lists.map((item, index) => (
+                        <S.Nav onClick={null} key={index}>
+                            <S.NavText>{item}</S.NavText>
+                        </S.Nav>
+                    ))}
+                </S.NavContainer>
+                <S.Nav>
+                    <S.SearchButton src={searchIcon || null} onClick={() => {setOnSearch(!onSearch)}} alt="searchIcon"/>
+                </S.Nav>
+                <S.MyLogo/>
+            </S.HeaderContainer>
+            {onSearch && <Search setOnClose={setOnSearch} />}
         </S.Wrapper>
     )
-
 }
 export default Header;

@@ -2,19 +2,26 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
     width: 100%;
-    height: 98px;
     display: flex;
+    flex-wrap: wrap;
+`
+export const HeaderContainer = styled.div`
+    width: 100%;
+    height: 100px;
+    display: flex;
+    box-sizing: border-box;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.1);
     align-items: center;
-    background-color: #ffffff;
     justify-content: space-evenly;
-    //box-shadow: 0 4px 4px 0 black;
+    padding-top: 2%;
+    padding-bottom: 2%;
 `
 export const Logo = styled.img`
     width: 187.17px;
     height: 48px;
 `
 
-export const searchButton = styled.img`
+export const SearchButton = styled.img`
     width: 32px;
     height: 32px;
 `
@@ -29,15 +36,12 @@ export const Nav = styled.div`
     cursor: pointer;
 `
 export const NavText = styled.span`
-    font-size: 20px;
-    font-family: Pretendard, sans-serif;
-    font-weight: 500;
+    font-size: ${({ theme }) => theme.fontSize.medium1};
+    font-weight: ${({ theme }) => theme.fontWeight.medium1};
 `
-
 export const MyLogo = styled.div`
     width: 63px;
     aspect-ratio: 1/1;
     border-radius: 100%;
     background-color: #6e6e6e;
-    
 `
