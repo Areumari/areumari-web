@@ -7,7 +7,7 @@ import {useNavigate} from "react-router-dom";
 
 const TechStackList = ({isStatic=false}) => {
     const navigate = useNavigate();
-    let Content = [{value:'방.',img:'/'},{value:'방.',img:'/'},{value:'방.',img:'/'},{value:'방.',img:'/'},{value:'방.',img:'/'},{value:'방.',img:'/'},{value:'방.',img:'/'}]
+    let Content = [{value:'Swift',img:'/'},{value:'Kotlin',img:'/'},{value:'React',img:'/'},{value:'React Native',img:'/'},{value:'Java',img:'/'},{value:'Spring Boot',img:'/'}]
     if (isStatic){
         Content = Content.slice(0,6)
     }
