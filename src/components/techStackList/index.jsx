@@ -5,7 +5,7 @@ import img from "src/assets/images/maki_arrow.png";
 import TechStack from "src/components/techStack";
 
 const TechStackList = () => {
-    const Content = [{value:'Swift',img:'/'},{value:'Kotlin',img:'/'},{value:'React',img:'/'},{value:'React Native',img:'/'},{value:'Java',img:'/'},{value:'Spring Boot',img:'/'}]
+    const Content = [{value:'방.',img:'/'},{value:'방.',img:'/'},{value:'방.',img:'/'},{value:'방.',img:'/'},{value:'방.',img:'/'},{value:'방.',img:'/'}]
     return (
         <S.Wrapper>
             <S.Head>
