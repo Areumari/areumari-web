@@ -1,16 +1,14 @@
 import React from 'react';
-import * as S from './style';
+import * as S from './style'
 import Header from "src/components/header";
-import Banner from "src/components/banner";
 import TechStackList from "src/components/techStackList";
 
-const Home = () => {
+const TechStackInfo = () => {
     return (
         <S.Wrapper>
             <Header/>
-            <Banner/>
-            <TechStackList isStatic/>
+            <TechStackList/>
         </S.Wrapper>
     )
 }
-export default Home;
+export default TechStackInfo

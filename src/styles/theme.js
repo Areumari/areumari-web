@@ -19,7 +19,8 @@ export const lightTheme = {
     fontWeight: {
         small1: '500',
         mediumSmall1: '500',
-        medium1: '600',
+        medium1: '500',
+        medium2: '600',
         large1: '700',
     }
 };
