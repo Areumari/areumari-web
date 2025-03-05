@@ -6,15 +6,17 @@ import ModalPortal from "src/modals/modalPortal";
 
 const Search = ({setOnClose}) => {
     const modalRef = useRef(null);
+    const {...search} = useSearch();
+    const [quickSearch, setQuickSearch] = useState([]);
+
     const handleOutsideClick = (event) => {
         if (modalRef.current && !modalRef.current.contains(event.target)) {
             setOnClose(false); // 모달 닫기
         }
     };
-    const {...search} = useSearch();
-    const [quickSearch, setQuickSearch] = useState([]);
+
     useEffect(() => {
-        setQuickSearch(['M6A1', 'Tiger II(H)', 'T-34-85(D-5T)', 'Churchill VII']);
+        setQuickSearch(['M6A1', 'Tiger II(H)', 'T-34-85(D-5T)', 'Churchill VII']); // 목업 데이터
     }, []);
 
     return (
