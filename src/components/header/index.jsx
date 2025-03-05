@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import * as S from './style';
 import headerIcon from 'src/assets/images/headerIcon.png'
 import searchIcon from 'src/assets/images/32/General/Search.png'
@@ -10,6 +10,12 @@ const Header = () => {
     const location = useLocation();
     const lists = [{name:'홈', path: '/'}, {name:'기술 스택 소개', path:'/techStacks'}, {name:'동아리 소개',path: ''}, {name:'강의 순위',path: ''}, {name:'저장한 강의'}];
     const [onSearch, setOnSearch] = useState(false);
+
+    useEffect(() => {
+        if (location.search) {
+            setOnSearch(false);
+        }
+    },[location.search]);
 
     return (
         <S.Wrapper>
