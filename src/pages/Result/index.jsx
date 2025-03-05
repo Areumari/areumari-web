@@ -7,7 +7,7 @@ const Result = () => {
     const location = useLocation();
     const [result, setResult] = useState([]);
     const params = new URLSearchParams(location.search);
-    const query = params.get("query") || "";
+    const query = params.get("search_query") || "";
 
     return (
         <S.Wrapper>

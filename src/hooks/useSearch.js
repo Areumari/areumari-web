@@ -8,9 +8,9 @@ export const useSearch = () => {
     const search = (e) => {
         e.preventDefault();
         if (query.trim())
-            navigate(`/results?query=${encodeURIComponent(query)}`, { replace: true });
+            navigate(`/results?search_query=${encodeURIComponent(query)}`);
         else {
-            console.log(query);
+            console.error('빈 값은 검색할 수 없어요');
         }
     }
     const handleOnChange = (e) => {
@@ -22,8 +22,8 @@ export const useSearch = () => {
         }
     };
     const quickSearch = (e) => {
-        setQuery(e.target.textContent)
-        search(e);
+        setQuery(e.target.textContent);
+        navigate(`/results?search_query=${encodeURIComponent(e.target.textContent)}`);
     }
     return {
         query,
