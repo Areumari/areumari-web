@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
-import {login, register} from "src/lib/customAxios";
+import apiClient from "src/lib/customAxios";
+import Cookies from "js-cookie";
 
 export const useAuth = () => {
     const [user, setUser] = useState({
@@ -26,26 +27,63 @@ export const useAuth = () => {
         const {name, value} = e.target;
         setUser({...user, [name]: value});
     }
-    const verifyCode = () => {
-        console.log('... 인증 실패.')
-        return null
-    }
-    const signIn = () => {
-        if (pass) {
-            console.log(user)
-            return login().then(res => {
-                console.log(res)
-            }).catch(err => {
-                console.log(err)
-                setPass(false)
-            });
+    const sendVerifyCode = async () => {
+        try {
+            const response = await apiClient.post('/api/auth/sendVerificationEmail', {
+                "email": user.email,
+            })
+            return response.data.message;
+        } catch (error) {
+            throw error;
         }
     }
-    const signUp = () => {
-        if (isEmail && isPassword && isNumber) {
-            return register().then(res => {
-                console.log(res)
+    const verifyCode = async (code) => {
+        try {
+            const response = await apiClient.post('/api/auth/verifyCode', {
+                "email": user.email,
+                "code": code,
             })
+            return response.data.message;
+        } catch (error) {
+            throw error;
+        }
+    }
+    const signIn = async (id, number, password) => {
+
+        if (pass) {
+            try {
+                const response = await apiClient.post('/api/auth/signUp', {
+                    "name": id,
+                    "snumber": number,
+                    "password": password
+                });
+
+                // 토큰 저장
+                const {accessToken, refreshToken} = response.data;
+                localStorage.setItem('access_token', accessToken);
+                Cookies.set('refresh_token', refreshToken, {expires: 7, secure: true, sameSite: 'Strict'});
+                return response.data;
+            } catch (error) {
+                console.error(error.response?.data || error.message);
+                setPass(false);
+                throw error;
+            }
+        }
+    }
+    const signUp = async (id, password, studentNumber) => {
+        if (isEmail && isPassword && isNumber) {
+            try {
+                const response = await apiClient.post('/api/auth/signUp', {
+                    "name": id,
+                    "snumber": studentNumber,
+                    "password": password,
+                    "authority": "ROLE_USER"
+                });
+                return response.data;
+            } catch (error) {
+                console.error(error.response?.data || error.message);
+                throw error;
+            }
         }
     }
     const changePW = () => {
@@ -60,6 +98,7 @@ export const useAuth = () => {
         isNumber,
         pass,
         changeInput,
+        sendVerifyCode,
         verifyCode,
         signIn,
         signUp,
