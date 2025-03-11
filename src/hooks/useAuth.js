@@ -52,7 +52,6 @@ export const useAuth = () => {
         }
     }
     const signIn = async () => {
-        if (pass) {
             try {
                 const response = await apiClient.post('/api/auth/signIn', {
                     "name": user.id,
@@ -66,10 +65,13 @@ export const useAuth = () => {
                 Cookies.set('refresh_token', refreshToken, {expires: 7, secure: true, sameSite: 'Strict'});
                 return response.data;
             } catch (error) {
-                console.error(error.response?.data || error.message);
-                setPass(false);
-                throw error;
-            }
+                console.log(error.response);
+                if (error.response.status === 400) {
+                    setPass(false);
+                }
+                else {
+                    throw error;
+                }
         }
     }
     const signUp = async () => {
