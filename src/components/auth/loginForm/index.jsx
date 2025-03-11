@@ -21,7 +21,7 @@ const LoginForm = () => {
                 value={auth.user.id}
                 change={auth.changeInput}
                 size={30}
-                warn={!auth.pass && 'error!'}
+                warn={!auth.pass && '아이디 또는 비밀번호가 일치하지 않습니다'}
             />
             <TextInput
                 title={'비밀번호'}
@@ -30,7 +30,7 @@ const LoginForm = () => {
                 value={auth.user.password}
                 change={auth.changeInput}
                 size={30}
-                warn={!auth.isPassword && '공백을 제외한 영어 대/소문자, 숫자를 4~30자 사이로 입력하여야 합니다' }
+                warn={(!auth.isPassword && '공백을 제외한 영어 대/소문자, 숫자를 4~30자 사이로 입력하여야 합니다') || (!auth.pass && '아이디 또는 비밀번호가 일치하지 않습니다') }
                 isPassword
             />
 
