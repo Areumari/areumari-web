@@ -9,11 +9,13 @@ export const useAuth = () => {
         password: "",
         checkPassword: "",
         number: "",
+        verifyCode: "",
     });
     const [isEmail, setCheckEmail] = useState(false);
     const [isPassword, setIsPassword] = useState(false);
     const [checkPassword, setCheckPassword] = useState(false);
     const [isNumber, setIsNumber] = useState(false);
+    const [isVerify, setIsVerify] = useState(false);
     const [pass, setPass] = useState(true);
 
     useEffect(() => {
@@ -21,6 +23,7 @@ export const useAuth = () => {
         setIsPassword(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?!.*\s).{4,15}$/.test(user.password))
         setCheckPassword(user.password === user.checkPassword);
         setIsNumber(/^[1-3][1-9](?!00)[0-2][0-9]$/.test(user.number));
+        setIsVerify(/^[0-9]{4}/.test(user.verifyCode));
     }, [user])
 
     const changeInput = (e) => {
@@ -48,14 +51,13 @@ export const useAuth = () => {
             throw error;
         }
     }
-    const signIn = async (id, number, password) => {
-
+    const signIn = async () => {
         if (pass) {
             try {
-                const response = await apiClient.post('/api/auth/signUp', {
-                    "name": id,
-                    "snumber": number,
-                    "password": password
+                const response = await apiClient.post('/api/auth/signIn', {
+                    "name": user.id,
+                    "snumber": user.number,
+                    "password": user.password
                 });
 
                 // 토큰 저장
@@ -70,13 +72,13 @@ export const useAuth = () => {
             }
         }
     }
-    const signUp = async (id, password, studentNumber) => {
+    const signUp = async () => {
         if (isEmail && isPassword && isNumber) {
             try {
                 const response = await apiClient.post('/api/auth/signUp', {
-                    "name": id,
-                    "snumber": studentNumber,
-                    "password": password,
+                    "name": user.id,
+                    "snumber": user.number,
+                    "password": user.password,
                     "authority": "ROLE_USER"
                 });
                 return response.data;
@@ -96,6 +98,7 @@ export const useAuth = () => {
         isPassword,
         checkPassword,
         isNumber,
+        isVerify,
         pass,
         changeInput,
         sendVerifyCode,

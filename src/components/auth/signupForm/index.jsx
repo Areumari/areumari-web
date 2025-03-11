@@ -51,6 +51,16 @@ const SignupForm = () => {
                 change={auth.changeInput}
                 size={30}
                 warn={auth.isEmail ? null : '이메일 형식이 아닙니다'}
+                verify={auth.sendVerifyCode}
+            />
+            <TextInput
+                title={'인증받은 코드'}
+                name={'verifyCode'}
+                placeholder={'0000'}
+                value={auth.user.verifyCode}
+                change={auth.changeInput}
+                size={4}
+                warn={auth.isVerify ? null : 'error'}
                 verify={auth.verifyCode}
             />
             <TextInput

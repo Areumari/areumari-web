@@ -20,7 +20,8 @@ apiClient.interceptors.request.use(
             //     const accessToken = await refreshTokenIfNeeded();
             //     config.headers['Authorization'] = `Bearer ${accessToken}`;
             // }
-            return Promise.resolve(config);
+            return config;
+            // return Promise.resolve(config);
         } catch (error) {
             console.error('Request interceptor error:', error);
             return Promise.reject(error);
