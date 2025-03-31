@@ -53,4 +53,5 @@ export const MyLogo = styled.div`
     aspect-ratio: 1/1;
     border-radius: 100%;
     background-color: #6e6e6e;
+    cursor: pointer;
 `

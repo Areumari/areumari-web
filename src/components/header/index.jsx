@@ -33,7 +33,7 @@ const Header = () => {
                 <S.Nav>
                     <S.SearchButton src={searchIcon || null} onClick={() => {setOnSearch(!onSearch)}} alt="searchIcon"/>
                 </S.Nav>
-                <S.MyLogo/>
+                <S.MyLogo onClick={() => {navigate('/myPage')}}/>
             </S.HeaderContainer>
             {onSearch && <Search setOnClose={setOnSearch} />}
         </S.Wrapper>

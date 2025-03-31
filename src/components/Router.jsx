@@ -6,6 +6,7 @@ import Signup from "src/pages/auth/signup";
 import ForgotPW from "src/pages/auth/forgotPW";
 import Result from "src/pages/Result";
 import TechStackInfo from "src/pages/techStackInfo";
+import User from "src/pages/user";
 
 const Router = () => {
     return (
@@ -17,6 +18,7 @@ const Router = () => {
                 <Route path='/forgot-PW' element={<ForgotPW/>}/>
                 <Route path='/results' element={<Result/>}/>
                 <Route path='/techStacks' element={<TechStackInfo/>}/>
+                <Route path='/myPage' element={<User/>}/>
             </Routes>
         </BrowserRouter>
     )

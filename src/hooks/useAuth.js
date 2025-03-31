@@ -1,8 +1,10 @@
 import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import apiClient from "src/lib/customAxios";
 import Cookies from "js-cookie";
 
 export const useAuth = () => {
+    const navigate = useNavigate();
     const [user, setUser] = useState({
         id: "",
         email: "",
@@ -58,15 +60,15 @@ export const useAuth = () => {
                     "snumber": user.number,
                     "password": user.password
                 });
-
                 // 토큰 저장
-                const {accessToken, refreshToken} = response.data;
+                const accessToken = response.data.tokenDto.accessToken;
+                const refreshToken = response.data.tokenDto.refreshToken;
                 localStorage.setItem('access_token', accessToken);
                 Cookies.set('refresh_token', refreshToken, {expires: 7, secure: true, sameSite: 'Strict'});
-                return response.data;
+                navigate('/');
             } catch (error) {
                 console.log(error.response);
-                if (error.response.status === 400) {
+                if (error.response?.status === 400) {
                     setPass(false);
                 }
                 else {
