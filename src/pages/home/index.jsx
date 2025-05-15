@@ -3,6 +3,7 @@ import * as S from './style';
 import Header from "src/components/header";
 import Banner from "src/components/banner";
 import TechStackList from "src/components/techStackList";
+import Inquiry from "src/components/inquiry";
 
 const Home = () => {
     return (
@@ -10,6 +11,7 @@ const Home = () => {
             <Header/>
             <Banner/>
             <TechStackList isStatic/>
+            <Inquiry/>
         </S.Wrapper>
     )
 }
